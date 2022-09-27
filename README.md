@@ -1,6 +1,6 @@
 # Iwara downloader with GUI
 
-![Iwara Downloader With GUI](https://github.com/szriru/iwara-downloader-with-GUI/HowToUse/assets/idwg.png)
+![Iwara Downloader With GUI](https://github.com/szriru/iwara-downloader-with-GUI/blob/main/HowToUse/assets/idwg.png)
 
 ## About the project
 
