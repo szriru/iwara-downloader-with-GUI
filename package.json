@@ -1,0 +1,87 @@
+{
+  "name": "iwara-downloader-with-GUI",
+  "description": "Downloader to download videos in iwara .tv with GUI",
+  "version": "0.1.0",
+  "license": "MIT",
+  "main": "main/index.js",
+  "author": {
+    "name": "szRiru",
+    "email": "szriko.abyss@gmail.com",
+    "url": "https://szriru.com"
+  },
+  "keywords": [
+    "vite",
+    "react",
+    "electron",
+    "typescript"
+  ],
+  "repository": {
+    "url": "https://github.com/lTimeless/vite-reactts-electron-starter"
+  },
+  "productName": "iwara-downloader-with-GUI",
+  "scripts": {
+    "dev": "concurrently \"npm run dev:vite\" \" npm run dev:electron\"",
+    "dev:vite": "vite",
+    "dev:electron": "npm run build:electron && electron .",
+    "build": "npm run build:vite && npm run build:electron",
+    "build:vite": "vite build",
+    "build:electron": "tsc -p electron",
+    "dist": "npm run build && electron-builder",
+    "pack": "npm run build && electron-builder --dir",
+    "clean": "rimraf dist main src/out",
+    "type-check": "tsc",
+    "lint": "eslint . --ext js,jsx,ts,tsx",
+    "lint:fix": "eslint . --ext js,jsx,ts,tsx --fix"
+  },
+  "_comment": {
+    "package-mac": "electron-packager . --overwrite --platform=darwin --arch=x64 --icon=assets/icons/mac/icon.icns --prune=true --out=release-builds",
+    "package-win": "electron-packager . iwara-downloader --overwrite --asar=true --platform=win32 --arch=ia32 --icon=./src/assets/icons/win/icon.ico --prune=true --out=release-builds --version-string.CompanyName=CE --version-string.FileDescription=CE --version-string.ProductName=\"iwara-downloader\"",
+    "package-linux": "electron-packager . iwara-downlaoder --overwrite --asar=true --platform=linux --arch=x64 --icon=assets/icons/png/icon.png --prune=true --out=release-builds"
+  },
+  "dependencies": {
+    "@emotion/styled": "^11.10.4",
+    "@mui/base": "^5.0.0-alpha.98",
+    "@mui/icons-material": "^5.10.6",
+    "@mui/system": "^5.10.6",
+    "@vitejs/plugin-react": "^1.2.0",
+    "axios": "^0.27.2",
+    "electron-is-dev": "^2.0.0",
+    "jsdom": "^20.0.0",
+    "nodejs-file-downloader": "^4.10.2",
+    "puppeteer": "^18.0.5",
+    "react": "^17.0.2",
+    "vite": "^2.8.6"
+  },
+  "devDependencies": {
+    "@types/node": "^17.0.22",
+    "@types/react": "^17.0.41",
+    "@types/react-dom": "^17.0.14",
+    "autoprefixer": "^10.4.4",
+    "concurrently": "^7.0.0",
+    "electron": "^17.1.2",
+    "electron-builder": "^22.14.13",
+    "postcss": "^8.4.12",
+    "tailwind-scrollbar": "^2.0.1",
+    "tailwindcss": "^3.0.23",
+    "typescript": "^4.6.2"
+  },
+  "build": {
+    "appId": "com.electron.iwara-downloader-with-GUI",
+    "asar": true,
+    "files": [
+      "main",
+      "src/out"
+    ],
+    "win": {
+      "target": "nsis",
+      "icon": "./src/assets/win/icon.ico"
+    },
+    "nsis": {
+      "oneClick": false,
+      "allowToChangeInstallationDirectory": true
+    },
+    "directories": {
+      "buildResources": "resources"
+    }
+  }
+}
